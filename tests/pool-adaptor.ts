@@ -35,59 +35,51 @@ const deposit11 = new anchor.web3.PublicKey("CZx29wKMUxaJDq6aLVQTdViPL754tTR64NA
 const deposit12 = new anchor.web3.PublicKey("4YPTC5LFiWNjcJjnaKSnZQgXEnGWgDcxwSLdozvCUUqE")
 
 
-const main = async () => {
+describe('pool-adaptor', () => {
 
-    const txRefreshReserve = await program.rpc.refreshReserve(
-        {
-            accounts: {
-                poolProgram: SOLEND_DEV_PROGRAM_ID,
-                reserve: refreshReserve0,
-                reserveLiquidityPythOracle: refreshReserve1,
-                reserveLiquiditySwitchboardOracle: refreshReserve2,
-                clock: SYSVAR_CLOCK_PUBKEY
+    beforeEach(async () => {
+        const txRefreshReserve = await program.rpc.refreshReserve(
+            {
+                accounts: {
+                    poolProgram: SOLEND_DEV_PROGRAM_ID,
+                    reserve: refreshReserve0,
+                    reserveLiquidityPythOracle: refreshReserve1,
+                    reserveLiquiditySwitchboardOracle: refreshReserve2,
+                    clock: SYSVAR_CLOCK_PUBKEY
+                }
             }
-        }
-    )
+        )
 
-    console.log("txRefreshReserve : ", txRefreshReserve)
+        console.log("txRefreshReserve : ", txRefreshReserve)
+    })
 
-    const depositAmount = 2 * Math.pow(10, 6)
+    it('deposit_reserve_liquidity_and_obligation_collateral', async () => {
+        const depositAmount = 2 * Math.pow(10, 6)
 
-    const txDepositReserveLiquidityAndObligationCollateral = await program.rpc.depositReserveLiquidityAndObligationCollateral(
-        new BN(depositAmount),
-        {
-            accounts: {
-                poolProgram: SOLEND_DEV_PROGRAM_ID,
-                sourceLiquidity: deposit0,
-                userCollateral: deposit1,
-                reserve: deposit2,
-                reserveLiquiditySupply: deposit3,
-                reserveCollateralMint: deposit4,
-                lendingMarket: deposit5,
-                lendingMarketAuthority: deposit6,
-                destinationDepositCollateral: deposit7,
-                obligation: deposit8,
-                obligationOwner: deposit9,
-                reserveLiquidityPythOracle: deposit10,
-                reserveLiquiditySwitchboardOracle: deposit11,
-                userTransferAuthority: deposit12,
-                clock: SYSVAR_CLOCK_PUBKEY,
-                tokenProgram: TOKEN_PROGRAM_ID
+        const txDepositReserveLiquidityAndObligationCollateral = await program.rpc.depositReserveLiquidityAndObligationCollateral(
+            new BN(depositAmount),
+            {
+                accounts: {
+                    poolProgram: SOLEND_DEV_PROGRAM_ID,
+                    sourceLiquidity: deposit0,
+                    userCollateral: deposit1,
+                    reserve: deposit2,
+                    reserveLiquiditySupply: deposit3,
+                    reserveCollateralMint: deposit4,
+                    lendingMarket: deposit5,
+                    lendingMarketAuthority: deposit6,
+                    destinationDepositCollateral: deposit7,
+                    obligation: deposit8,
+                    obligationOwner: deposit9,
+                    reserveLiquidityPythOracle: deposit10,
+                    reserveLiquiditySwitchboardOracle: deposit11,
+                    userTransferAuthority: deposit12,
+                    clock: SYSVAR_CLOCK_PUBKEY,
+                    tokenProgram: TOKEN_PROGRAM_ID
+                }
             }
-        }
-    )
+        )
 
-    console.log("txDepositReserveLiquidityAndObligationCollateral : ", txDepositReserveLiquidityAndObligationCollateral)
-}
-
-const runMain = async () => {
-    try {
-        await main();
-        process.exit(0);
-    } catch (error) {
-        console.error(error);
-        process.exit(1);
-    }
-};
-
-runMain();
+        console.log("txDepositReserveLiquidityAndObligationCollateral : ", txDepositReserveLiquidityAndObligationCollateral)
+    });
+});

@@ -1,0 +1,20 @@
+[package]
+name = "pool-adaptor"
+version = "0.1.0"
+description = "Created with Anchor"
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "pool_adaptor"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.21.0"
+spl-token-lending = { git = "https://github.com/solendprotocol/solana-program-library", features = ["no-entrypoint"] }

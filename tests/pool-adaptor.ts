@@ -71,7 +71,6 @@ const main = async () => {
                 reserveLiquidityPythOracle: deposit10,
                 reserveLiquiditySwitchboardOracle: deposit11,
                 userTransferAuthority: deposit12,
-                signer: provider.wallet.publicKey,
                 clock: SYSVAR_CLOCK_PUBKEY,
                 tokenProgram: TOKEN_PROGRAM_ID
             }

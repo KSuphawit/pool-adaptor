@@ -85,7 +85,6 @@ pub struct DepositReserveLiquidityAndObligationCollateralInput<'info> {
     pub reserve_liquidity_pyth_oracle: AccountInfo<'info>,
     pub reserve_liquidity_switchboard_oracle: AccountInfo<'info>,
     pub user_transfer_authority: AccountInfo<'info>,
-    pub signer: Signer<'info>,
     pub clock: AccountInfo<'info>,
     pub token_program: AccountInfo<'info>,
 }

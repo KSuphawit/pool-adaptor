@@ -1,7 +1,7 @@
 [features]
 seeds = false
 [programs.devnet]
-pool_adaptor = "8hqwuvN3Wcyoj2haZgdMzzrwLLX47ERxHZunTn87Ee3p"
+pool_adaptor = "4MEHAqSFJM7uN2skG7Uj3L8REayCjSKbyovfRa9kSEW9"
 
 [registry]
 url = "https://anchor.projectserum.com"

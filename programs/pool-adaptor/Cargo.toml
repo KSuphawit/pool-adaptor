@@ -16,5 +16,6 @@ cpi = ["no-entrypoint"]
 default = []
 
 [dependencies]
-anchor-lang = "0.21.0"
-spl-token-lending = { git = "https://github.com/solendprotocol/solana-program-library", features = ["no-entrypoint"] }
+anchor-lang = "0.22.0"
+spl-token-lending = { git = "https://github.com/solendprotocol/solana-program-library", features = ["no-entrypoint"] , version = "0.1.0"}
+spl-token = { version = "3.2.0", features=["no-entrypoint"] }
